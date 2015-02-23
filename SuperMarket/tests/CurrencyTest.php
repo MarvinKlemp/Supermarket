@@ -10,7 +10,8 @@ class CurrencyTest extends \PHPUnit_Framework_TestCase
     {
         $currency = new Currency("Euro", "€");
 
+        $this->assertInstanceOf(Currency::class, $currency);
         $this->assertEquals("Euro", $currency->getName());
-        $this->assertEquals("E", $currency->getRepresentation());
+        $this->assertEquals("€", $currency->getRepresentation());
     }
 } 

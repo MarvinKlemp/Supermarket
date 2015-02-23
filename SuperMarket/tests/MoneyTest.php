@@ -12,6 +12,8 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
         $currency = $this->getMockBuilder(Currency::class)->disableOriginalConstructor()->getMock();
 
         $money = new Money(100, $currency);
+
+        $this->assertInstanceOf(Money::class, $money);
         $this->assertEquals(100, $money->getAmount());
         $this->assertSame($currency, $money->getCurrency());
     }
