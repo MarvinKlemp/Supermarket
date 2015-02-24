@@ -6,13 +6,13 @@ use CodingKatas\SuperMarket\Event\AggregateRoot;
 use CodingKatas\SuperMarket\Event\EventHistory;
 use CodingKatas\SuperMarket\Events\CustomerStartedShopping;
 
-class Shopping extends AggregateRoot
+class ShoppingBag extends AggregateRoot
 {
     protected $customer;
 
     public static function startShopping(Customer $customer)
     {
-        $shopping = new Shopping();
+        $shopping = new ShoppingBag();
         $shopping->recordThat(new CustomerStartedShopping($customer));
 
         return $shopping;
