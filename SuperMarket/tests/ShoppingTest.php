@@ -3,6 +3,7 @@
 namespace CodingKatas\SuperMarket\Tests;
 
 use CodingKatas\SuperMarket\Customer;
+use CodingKatas\SuperMarket\Product;
 use CodingKatas\SuperMarket\ShoppingBag;
 
 class ShoppingBagTest extends \PHPUnit_Framework_TestCase
@@ -31,5 +32,17 @@ class ShoppingBagTest extends \PHPUnit_Framework_TestCase
 
         $shopping->build();
         $this->assertSame($customer, $shopping->getCustomer());
+    }
+
+    public function test_it_should_apply_correct_if_product_was_put_into_shopping_bag()
+    {
+        $customer = $this->getMockBuilder(Customer::class)->disableOriginalConstructor()->getMock();
+        $product = $this->getMockBuilder(Product::class)->disableOriginalConstructor()->getMock();
+
+        $shopping = ShoppingBag::startShopping($customer);
+        $shopping->addProduct($product);
+
+        $shopping->build();
+        $this->assertContains($product, $shopping->getProducts());
     }
 } 
