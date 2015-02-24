@@ -2,16 +2,19 @@
 
 namespace CodingKatas\SuperMarket\Event;
 
-class EventHistory implements \Countable, \Iterator
+class EventHistory implements \Countable
 {
+    /**
+     * @var DomainEvent[]
+     */
     protected $events;
 
-    protected $pos;
-
-    public function __construct()
+    /**
+     * @param DomainEvent[] $events
+     */
+    public function __construct(array $events = [])
     {
-        $this->events = [];
-        $this->pos = 0;
+        $this->events = $events;
     }
 
     /**
@@ -36,45 +39,5 @@ class EventHistory implements \Countable, \Iterator
     public function count()
     {
         return count($this->events);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function current()
-    {
-        return $this->events[$this->pos];
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function next()
-    {
-        ++$this->pos;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function key()
-    {
-        return $this->pos;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function valid()
-    {
-        return isset($this->events[$this->pos]);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function rewind()
-    {
-        $this->pos = 0;
     }
 } 

@@ -23,4 +23,13 @@ class ShoppingTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf(Shopping::class, $shopping);
         $this->assertSame($customer, $shopping->getEventHistory()->getRecordedEvents()[0]->getCustomer());
     }
+
+    public function test_it_should_apply_correct_if_customer_started_shopping()
+    {
+        $customer = $this->getMockBuilder(Customer::class)->disableOriginalConstructor()->getMock();
+        $shopping = Shopping::startShopping($customer);
+
+        $shopping->build();
+        $this->assertSame($customer, $shopping->getCustomer());
+    }
 } 

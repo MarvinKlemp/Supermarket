@@ -43,7 +43,7 @@ abstract class AggregateRoot
      */
     public function build()
     {
-        foreach ($this->events as $event) {
+        foreach ($this->events->getRecordedEvents() as $event) {
             $this->apply($event);
         }
     }
