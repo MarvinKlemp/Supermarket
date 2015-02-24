@@ -2,7 +2,12 @@
 
 namespace CodingKatas\SuperMarket\Event;
 
-class DomainEvent
+abstract class DomainEvent
 {
+    protected $recordedAt;
 
+    public function __construct()
+    {
+        $this->recordedAt = new \DateTime('NOW');
+    }
 } 

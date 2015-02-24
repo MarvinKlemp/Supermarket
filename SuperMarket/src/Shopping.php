@@ -2,27 +2,34 @@
 
 namespace CodingKatas\SuperMarket;
 
-use CodingKatas\SuperMarket\Event\EventStream;
+use CodingKatas\SuperMarket\Event\AggregateRoot;
+use CodingKatas\SuperMarket\Event\EventHistory;
+use CodingKatas\SuperMarket\Events\CustomerStartedShopping;
 
-class Shopping
+class Shopping extends AggregateRoot
 {
-    protected function __construct(EventStream $stream = null)
-    {
-
-    }
+    protected $customer;
 
     public static function startShopping(Customer $customer)
     {
-        return new Shopping();
+        $shopping = new Shopping();
+        $shopping->recordThat(new CustomerStartedShopping($customer));
+
+        return $shopping;
     }
 
-    public static function resumeShopping(EventStream $stream)
+    public static function resumeShopping(EventHistory $stream)
     {
         // TODO
     }
 
+    public function applyCustomerStartedShopping(CustomerStartedShopping $event)
+    {
+        $this->customer = $event->getCustomer();
+    }
+
     public function getCustomer()
     {
-
+        return $this->customer;
     }
 } 
