@@ -3,6 +3,7 @@
 namespace CodingKatas\SuperMarket\Tests;
 
 use CodingKatas\SuperMarket\Customer;
+use CodingKatas\SuperMarket\Event\AggregateIsNotProcessedException;
 use CodingKatas\SuperMarket\Product;
 use CodingKatas\SuperMarket\ShoppingBag;
 
@@ -32,6 +33,19 @@ class ShoppingBagTest extends \PHPUnit_Framework_TestCase
 
         $shopping->process();
         $this->assertSame($customer, $shopping->getCustomer());
+    }
+
+    public function test_it_should_throw_an_aggregate_is_not_prosecced_exception()
+    {
+
+        $customer = $this->getMockBuilder(Customer::class)->disableOriginalConstructor()->getMock();
+        $shopping = ShoppingBag::startShopping($customer);
+
+        $this->setExpectedException(AggregateIsNotProcessedException::class);
+        $shopping->getCustomer();
+
+        $this->setExpectedException(AggregateIsNotProcessedException::class);
+        $shopping->getProducts();
     }
 
     public function test_it_should_apply_correct_if_product_was_put_into_shopping_bag()
