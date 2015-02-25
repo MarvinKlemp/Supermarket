@@ -30,7 +30,7 @@ class ShoppingBagTest extends \PHPUnit_Framework_TestCase
         $customer = $this->getMockBuilder(Customer::class)->disableOriginalConstructor()->getMock();
         $shopping = ShoppingBag::startShopping($customer);
 
-        $shopping->build();
+        $shopping->process();
         $this->assertSame($customer, $shopping->getCustomer());
     }
 
@@ -42,7 +42,7 @@ class ShoppingBagTest extends \PHPUnit_Framework_TestCase
         $shopping = ShoppingBag::startShopping($customer);
         $shopping->addProduct($product);
 
-        $shopping->build();
+        $shopping->process();
         $this->assertContains($product, $shopping->getProducts());
     }
 } 

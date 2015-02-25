@@ -2,6 +2,7 @@
 
 namespace CodingKatas\SuperMarket;
 
+use CodingKatas\SuperMarket\Event\AggregateIsNotProcessedException;
 use CodingKatas\SuperMarket\Event\AggregateRoot;
 use CodingKatas\SuperMarket\Event\EventHistory;
 use CodingKatas\SuperMarket\Events\CustomerStartedShopping;
@@ -49,13 +50,29 @@ class ShoppingBag extends AggregateRoot
         $this->products[] = $event->getProduct();
     }
 
+    /**
+     * @return Customer
+     * @throws AggregateIsNotProcessedException
+     */
     public function getCustomer()
     {
+        if(!$this->isProcessed) {
+            throw new AggregateIsNotProcessedException();
+        }
+
         return $this->customer;
     }
 
+    /**
+     * @return Product[]
+     * @throws AggregateIsNotProcessedException
+     */
     public function getProducts()
     {
+        if(!$this->isProcessed) {
+            throw new AggregateIsNotProcessedException();
+        }
+
         return $this->products;
     }
 } 

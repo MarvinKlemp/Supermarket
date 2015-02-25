@@ -10,6 +10,11 @@ abstract class AggregateRoot
     protected $events;
 
     /**
+     * @var bool
+     */
+    protected $isProcessed;
+
+    /**
      * @param EventHistory $events
      */
     public function __construct(EventHistory $events = null)
@@ -19,6 +24,8 @@ abstract class AggregateRoot
         } else {
             $this->events = $events;
         }
+
+        $this->isProcessed = false;
     }
 
     /**
@@ -39,13 +46,15 @@ abstract class AggregateRoot
     }
 
     /**
-     * Builds the state using the current EventHistory
+     * Processes the EventHistory and build the current state
      */
-    public function build()
+    public function process()
     {
         foreach ($this->events->getRecordedEvents() as $event) {
             $this->apply($event);
         }
+
+        $this->isProcessed = true;
     }
 
     /**
