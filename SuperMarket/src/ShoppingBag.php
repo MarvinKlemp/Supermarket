@@ -10,10 +10,19 @@ use CodingKatas\SuperMarket\Events\ProductWasPutIntoShoppingBag;
 
 class ShoppingBag extends AggregateRoot
 {
+    /**
+     * @var Customer
+     */
     protected $customer;
 
+    /**
+     * @var ProductCount[]
+     */
     protected $products;
 
+    /**
+     * @param EventHistory $events
+     */
     public function __construct(EventHistory $events = null)
     {
         parent::__construct($events);
@@ -22,6 +31,10 @@ class ShoppingBag extends AggregateRoot
         $this->products = [];
     }
 
+    /**
+     * @param Customer $customer
+     * @return ShoppingBag
+     */
     public static function startShopping(Customer $customer)
     {
         $shopping = new ShoppingBag();
@@ -30,6 +43,10 @@ class ShoppingBag extends AggregateRoot
         return $shopping;
     }
 
+    /**
+     * @param EventHistory $history
+     * @return ShoppingBag
+     */
     public static function resumeShopping(EventHistory $history)
     {
         return new ShoppingBag($history);
@@ -40,6 +57,9 @@ class ShoppingBag extends AggregateRoot
         $this->customer = $event->getCustomer();
     }
 
+    /**
+     * @param Product $product
+     */
     public function addProduct(Product $product)
     {
         $this->recordThat(new ProductWasPutIntoShoppingBag($product));
@@ -48,10 +68,13 @@ class ShoppingBag extends AggregateRoot
     public function applyProductWasPutIntoShoppingBag(ProductWasPutIntoShoppingBag $event)
     {
         $product = $event->getProduct();
-        $this->products[$product->identity()] = [
-            'count' => isset($this->products[$product->identity()]['count']) ? ++$this->products[$product->identity()]['count'] : 1,
-            'object' => $event->getProduct()
-        ];
+        $id = $product->identity();
+
+        if (!isset($this->products[$id])) {
+            $this->products[$id] = new ProductCount($product);
+        } else {
+            $this->products[$id]->incrementCount();
+        }
     }
 
     /**
@@ -68,7 +91,7 @@ class ShoppingBag extends AggregateRoot
     }
 
     /**
-     * @return Product[]
+     * @return ProductCount[]
      * @throws AggregateIsNotProcessedException
      */
     public function getProducts()
