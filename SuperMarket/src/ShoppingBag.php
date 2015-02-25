@@ -47,7 +47,11 @@ class ShoppingBag extends AggregateRoot
 
     public function applyProductWasPutIntoShoppingBag(ProductWasPutIntoShoppingBag $event)
     {
-        $this->products[] = $event->getProduct();
+        $product = $event->getProduct();
+        $this->products[$product->identity()] = [
+            'count' => isset($this->products[$product->identity()]['count']) ? ++$this->products[$product->identity()]['count'] : 1,
+            'object' => $event->getProduct()
+        ];
     }
 
     /**
