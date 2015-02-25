@@ -30,9 +30,9 @@ class ShoppingBag extends AggregateRoot
         return $shopping;
     }
 
-    public static function resumeShopping(EventHistory $stream)
+    public static function resumeShopping(EventHistory $history)
     {
-        // TODO
+        return new ShoppingBag($history);
     }
 
     public function applyCustomerStartedShopping(CustomerStartedShopping $event)
