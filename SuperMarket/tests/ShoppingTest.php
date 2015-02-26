@@ -33,7 +33,7 @@ class ShoppingTest extends \PHPUnit_Framework_TestCase
         $shopping = Shopping::startShopping($customer);
 
         $this->assertInstanceOf(Shopping::class, $shopping);
-        $this->assertSame($customer, $shopping->getEventHistory()->getRecordedEvents()[0]->getCustomer());
+        $this->assertSame($customer, $shopping->getEventHistory()->getRecordedEvents()[0]->customer());
     }
 
 
@@ -72,7 +72,7 @@ class ShoppingTest extends \PHPUnit_Framework_TestCase
         $shopping->putProductIntoProductBag($product);
 
         $shopping->process();
-        $this->assertTrue($shopping->getShoppingBag()->hasProduct($product));
+        $this->assertTrue($shopping->getShoppingBag()->isProductInShoppingBag($product));
     }
 
     public function test_it_should_apply_correct_if_product_was_put_into_shopping_bag_twice()
@@ -88,7 +88,7 @@ class ShoppingTest extends \PHPUnit_Framework_TestCase
         $shopping->putProductIntoProductBag($product);
 
         $shopping->process();
-        $this->assertTrue($shopping->getShoppingBag()->hasProduct($product));
+        $this->assertTrue($shopping->getShoppingBag()->isProductInShoppingBag($product));
         $this->assertSame(2, $shopping->getShoppingBag()->getProductCount($product));
     }
 } 

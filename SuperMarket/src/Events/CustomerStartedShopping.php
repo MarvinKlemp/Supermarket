@@ -22,7 +22,7 @@ class CustomerStartedShopping extends DomainEvent
         $this->customer = $customer;
     }
 
-    public function getCustomer()
+    public function customer()
     {
         return $this->customer;
     }

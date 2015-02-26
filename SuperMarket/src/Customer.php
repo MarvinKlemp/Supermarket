@@ -35,7 +35,7 @@ class Customer
     /**
      * @return string
      */
-    public function getName()
+    public function name()
     {
         return $this->name;
     }

@@ -27,7 +27,7 @@ class Money
     /**
      * @return int
      */
-    public function getAmount()
+    public function amountOfMoney()
     {
         return $this->amount;
     }
@@ -35,7 +35,7 @@ class Money
     /**
      * @return Currency
      */
-    public function getCurrency()
+    public function currency()
     {
         return $this->currency;
     }

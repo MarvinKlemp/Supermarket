@@ -22,7 +22,7 @@ class ShoppingBag
     /**
      * @param Product $product
      */
-    public function addProduct(Product $product)
+    public function putProductInShoppingBag(Product $product)
     {
         $id = $product->identity();
         if (!isset($this->products[$id])) {
@@ -62,7 +62,7 @@ class ShoppingBag
      * @param Product $product
      * @return bool
      */
-    public function hasProduct(Product $product)
+    public function isProductInShoppingBag(Product $product)
     {
         return isset($this->products[$product->identity()]);
     }
@@ -73,7 +73,7 @@ class ShoppingBag
      */
     public function getProductCount(Product $product)
     {
-        if (!$this->hasProduct($product)) {
+        if (!$this->isProductInShoppingBag($product)) {
             return 0;
         }
 

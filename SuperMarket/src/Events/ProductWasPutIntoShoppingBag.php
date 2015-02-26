@@ -23,7 +23,7 @@ class ProductWasPutIntoShoppingBag extends DomainEvent
     /**
      * @return Product
      */
-    public function getProduct()
+    public function product()
     {
         return $this->product;
     }

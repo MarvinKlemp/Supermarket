@@ -27,7 +27,7 @@ class Currency
     /**
      * @return string
      */
-    public function getName()
+    public function name()
     {
         return $this->name;
     }
@@ -35,7 +35,7 @@ class Currency
     /**
      * @return string
      */
-    public function getRepresentation()
+    public function representation()
     {
         return $this->representation;
     }

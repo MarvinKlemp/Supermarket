@@ -14,7 +14,7 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
         $money = new Money(100, $currency);
 
         $this->assertInstanceOf(Money::class, $money);
-        $this->assertEquals(100, $money->getAmount());
-        $this->assertSame($currency, $money->getCurrency());
+        $this->assertEquals(100, $money->amountOfMoney());
+        $this->assertSame($currency, $money->currency());
     }
 } 

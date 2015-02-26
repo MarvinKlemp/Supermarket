@@ -15,7 +15,7 @@ class ProductTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf(Product::class, $product);
         $this->assertEquals(1, $product->identity());
-        $this->assertEquals("ball", $product->getName());
-        $this->assertSame($money, $product->getPrice());
+        $this->assertEquals("ball", $product->name());
+        $this->assertSame($money, $product->price());
     }
 } 

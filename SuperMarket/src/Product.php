@@ -42,7 +42,7 @@ class Product
     /**
      * @return string
      */
-    public function getName()
+    public function name()
     {
         return $this->name;
     }
@@ -50,7 +50,7 @@ class Product
     /**
      * @return Money
      */
-    public function getPrice()
+    public function price()
     {
         return $this->price;
     }

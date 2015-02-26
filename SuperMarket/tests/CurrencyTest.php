@@ -11,7 +11,7 @@ class CurrencyTest extends \PHPUnit_Framework_TestCase
         $currency = new Currency("Euro", "€");
 
         $this->assertInstanceOf(Currency::class, $currency);
-        $this->assertEquals("Euro", $currency->getName());
-        $this->assertEquals("€", $currency->getRepresentation());
+        $this->assertEquals("Euro", $currency->name());
+        $this->assertEquals("€", $currency->representation());
     }
 } 
