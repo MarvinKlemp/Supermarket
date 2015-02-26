@@ -14,9 +14,9 @@ class ShoppingBag
      */
     protected $productsCount;
 
-    public function __construct()
+    public function __construct(array $products = [])
     {
-        $this->products = [];
+        $this->products = $products;
     }
 
     /**
@@ -41,7 +41,21 @@ class ShoppingBag
      */
     public function getProducts()
     {
-        // @TODO get prooducts
+        return $this->products;
+    }
+
+    /**
+     * @return Product[]
+     */
+    public function productsInShoppingBag()
+    {
+        $res = [];
+
+        foreach ($this->products as $pc) {
+            $res[] = $pc['object'];
+        }
+
+        return $res;
     }
 
     /**
