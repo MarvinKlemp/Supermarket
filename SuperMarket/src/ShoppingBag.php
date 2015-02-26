@@ -43,4 +43,26 @@ class ShoppingBag
     {
         // @TODO get prooducts
     }
+
+    /**
+     * @param Product $product
+     * @return bool
+     */
+    public function hasProduct(Product $product)
+    {
+        return isset($this->products[$product->identity()]);
+    }
+
+    /**
+     * @param Product $product
+     * @return int
+     */
+    public function getProductCount(Product $product)
+    {
+        if (!$this->hasProduct($product)) {
+            return 0;
+        }
+
+        return $this->products[$product->identity()]['count'];
+    }
 } 

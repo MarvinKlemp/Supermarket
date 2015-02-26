@@ -35,7 +35,7 @@ class Shopping extends AggregateRoot
 
     /**
      * @param Customer $customer
-     * @return ShoppingBag
+     * @return Shopping
      */
     public static function startShopping(Customer $customer)
     {
@@ -47,7 +47,7 @@ class Shopping extends AggregateRoot
 
     /**
      * @param EventHistory $history
-     * @return ShoppingBag
+     * @return Shopping
      */
     public static function resumeShopping(EventHistory $history)
     {
@@ -88,6 +88,11 @@ class Shopping extends AggregateRoot
         return $this->shoppingBag;
     }
 
+    public function applyCustomerStartedShopping(CustomerStartedShopping $event)
+    {
+        $this->shoppingBag = new ShoppingBag();
+        $this->customer = $event->getCustomer();
+    }
 
     public function applyProductWasPutIntoShoppingBag(ProductWasPutIntoShoppingBag $event)
     {
