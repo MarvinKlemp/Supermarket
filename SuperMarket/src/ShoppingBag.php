@@ -9,11 +9,6 @@ class ShoppingBag
      */
     protected $products;
 
-    /**
-     * @var array
-     */
-    protected $productsCount;
-
     public function __construct(array $products = [])
     {
         $this->products = $products;
@@ -22,7 +17,7 @@ class ShoppingBag
     /**
      * @param Product $product
      */
-    public function putProductInShoppingBag(Product $product)
+    public function putProductIntoShoppingBag(Product $product)
     {
         $id = $product->identity();
         if (!isset($this->products[$id])) {
@@ -33,15 +28,6 @@ class ShoppingBag
         } else {
             $this->products[$id]['count']++;
         }
-    }
-
-
-    /**
-     * @return array
-     */
-    public function getProducts()
-    {
-        return $this->products;
     }
 
     /**
@@ -71,7 +57,7 @@ class ShoppingBag
      * @param Product $product
      * @return int
      */
-    public function getProductCount(Product $product)
+    public function howOftenIsProductInShoppingBag(Product $product)
     {
         if (!$this->isProductInShoppingBag($product)) {
             return 0;

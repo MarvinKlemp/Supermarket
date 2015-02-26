@@ -96,6 +96,6 @@ class Shopping extends AggregateRoot
 
     public function applyProductWasPutIntoShoppingBag(ProductWasPutIntoShoppingBag $event)
     {
-        $this->shoppingBag->putProductInShoppingBag($event->product());
+        $this->shoppingBag->putProductIntoShoppingBag($event->product());
     }
 } 

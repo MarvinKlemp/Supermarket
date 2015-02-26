@@ -89,6 +89,6 @@ class ShoppingTest extends \PHPUnit_Framework_TestCase
 
         $shopping->process();
         $this->assertTrue($shopping->getShoppingBag()->isProductInShoppingBag($product));
-        $this->assertSame(2, $shopping->getShoppingBag()->getProductCount($product));
+        $this->assertSame(2, $shopping->getShoppingBag()->howOftenIsProductInShoppingBag($product));
     }
 } 
