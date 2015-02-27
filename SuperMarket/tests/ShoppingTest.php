@@ -42,7 +42,7 @@ class ShoppingTest extends \PHPUnit_Framework_TestCase
         $customer = $this->getMockBuilder(Customer::class)->disableOriginalConstructor()->getMock();
         $shopping = Shopping::startShopping($customer);
 
-        $shopping->process();
+        $shopping->processHistory();
         $this->assertSame($customer, $shopping->getCustomer());
     }
 
@@ -71,7 +71,7 @@ class ShoppingTest extends \PHPUnit_Framework_TestCase
         $shopping = Shopping::startShopping($customer);
         $shopping->putProductIntoProductBag($product);
 
-        $shopping->process();
+        $shopping->processHistory();
         $this->assertTrue($shopping->getShoppingBag()->isProductInShoppingBag($product));
     }
 
@@ -87,7 +87,7 @@ class ShoppingTest extends \PHPUnit_Framework_TestCase
         $shopping->putProductIntoProductBag($product);
         $shopping->putProductIntoProductBag($product);
 
-        $shopping->process();
+        $shopping->processHistory();
         $this->assertTrue($shopping->getShoppingBag()->isProductInShoppingBag($product));
         $this->assertSame(2, $shopping->getShoppingBag()->howOftenIsProductInShoppingBag($product));
     }

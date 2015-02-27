@@ -97,18 +97,18 @@ class Shopping extends AggregateRoot
         return $this->shoppingBag;
     }
 
-    public function applyCustomerStartedShopping(CustomerStartedShopping $event)
+    public function processCustomerStartedShopping(CustomerStartedShopping $event)
     {
         $this->shoppingBag = new ShoppingBag();
         $this->customer = $event->customer();
     }
 
-    public function applyProductWasPutIntoShoppingBag(ProductWasPutIntoShoppingBag $event)
+    public function processProductWasPutIntoShoppingBag(ProductWasPutIntoShoppingBag $event)
     {
         $this->shoppingBag->putProductIntoShoppingBag($event->product());
     }
 
-    public function applyProductWasRemovedFromShoppingBag(ProductWasRemovedFromShoppingBag $event)
+    public function processProductWasRemovedFromShoppingBag(ProductWasRemovedFromShoppingBag $event)
     {
         $this->shoppingBag->removeProductFromShoppingBag($event->product());
     }

@@ -39,19 +39,19 @@ abstract class AggregateRoot
     /**
      * @param DomainEvent $event
      */
-    private function apply(DomainEvent $event)
+    private function process(DomainEvent $event)
     {
-        $method = "apply" . (new \ReflectionClass($event))->getShortName();
+        $method = "process" . (new \ReflectionClass($event))->getShortName();
         $this->$method($event);
     }
 
     /**
      * Processes the EventHistory and build the current state
      */
-    public function process()
+    public function processHistory()
     {
         foreach ($this->events->getRecordedEvents() as $event) {
-            $this->apply($event);
+            $this->process($event);
         }
 
         $this->isProcessed = true;
