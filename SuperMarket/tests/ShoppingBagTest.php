@@ -17,7 +17,7 @@ class ShoppingBagTest extends \PHPUnit_Framework_TestCase
         $data = [
             'id' => [
                 'object' => $this->getMockBuilder(Product::class)->disableOriginalConstructor()->getMock(),
-                'count' => 0
+                'count' => 1
             ]
         ];
         $shoppingBag = new ShoppingBag($data);
@@ -25,8 +25,44 @@ class ShoppingBagTest extends \PHPUnit_Framework_TestCase
         $this->assertSame([$data["id"]["object"]], $shoppingBag->productsInShoppingBag());
     }
 
-    public function test_has_product_works_correctly()
+    public function test_is_product_in_shopping_bag_works_correctly()
     {
         $shoppingBag = new ShoppingBag();
+    }
+
+    public function test_it_should_put_products_into_shoppingbag()
+    {
+        $product = $this->getMockBuilder(Product::class)->disableOriginalConstructor()->getMock();
+        $product->expects($this->any())
+            ->method("identity")
+            ->willReturn("id");
+
+        $shoppingBag = new ShoppingBag();
+        $shoppingBag->putProductIntoShoppingBag($product);
+
+        $this->assertSame([$product], $shoppingBag->productsInShoppingBag());
+        $this->assertTrue($shoppingBag->isProductInShoppingBag($product));
+        $this->assertSame(1, $shoppingBag->howOftenIsProductInShoppingBag($product));
+    }
+
+    public function test_it_should_remove_products_from_shoppingbag()
+    {
+        $product = $this->getMockBuilder(Product::class)->disableOriginalConstructor()->getMock();
+        $product->expects($this->any())
+            ->method("identity")
+            ->willReturn("id");
+        $data = [
+            'id' => [
+                'object' => $product,
+                'count' => 1
+            ]
+        ];
+
+        $shoppingBag = new ShoppingBag($data);
+        $shoppingBag->removeProductFromShoppingBag($product);
+
+        $this->assertSame([], $shoppingBag->productsInShoppingBag());
+        $this->assertFalse($shoppingBag->isProductInShoppingBag($product));
+        $this->assertSame(0, $shoppingBag->howOftenIsProductInShoppingBag($product));
     }
 } 

@@ -64,7 +64,7 @@ class ShoppingTest extends \PHPUnit_Framework_TestCase
     {
         $customer = $this->getMockBuilder(Customer::class)->disableOriginalConstructor()->getMock();
         $product = $this->getMockBuilder(Product::class)->disableOriginalConstructor()->getMock();
-        $product->expects($this->exactly(2))
+        $product->expects($this->any())
             ->method("identity")
             ->willReturn("id");
 
@@ -79,7 +79,7 @@ class ShoppingTest extends \PHPUnit_Framework_TestCase
     {
         $customer = $this->getMockBuilder(Customer::class)->disableOriginalConstructor()->getMock();
         $product = $this->getMockBuilder(Product::class)->disableOriginalConstructor()->getMock();
-        $product->expects($this->exactly(5))
+        $product->expects($this->any())
             ->method("identity")
             ->willReturn("id");
 

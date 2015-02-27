@@ -7,6 +7,7 @@ use CodingKatas\SuperMarket\Event\AggregateRoot;
 use CodingKatas\SuperMarket\Event\EventHistory;
 use CodingKatas\SuperMarket\Events\CustomerStartedShopping;
 use CodingKatas\SuperMarket\Events\ProductWasPutIntoShoppingBag;
+use CodingKatas\SuperMarket\Events\ProductWasRemovedFromShoppingBag;
 
 class Shopping extends AggregateRoot
 {
@@ -63,6 +64,14 @@ class Shopping extends AggregateRoot
     }
 
     /**
+     * @param Product $product
+     */
+    public function removeProductFromShoppingBag(Product $product)
+    {
+        $this->recordThat(new ProductWasRemovedFromShoppingBag($product));
+    }
+
+    /**
      * @return Customer
      * @throws AggregateIsNotProcessedException
      */
@@ -97,5 +106,10 @@ class Shopping extends AggregateRoot
     public function applyProductWasPutIntoShoppingBag(ProductWasPutIntoShoppingBag $event)
     {
         $this->shoppingBag->putProductIntoShoppingBag($event->product());
+    }
+
+    public function applyProductWasRemovedFromShoppingBag(ProductWasRemovedFromShoppingBag $event)
+    {
+        $this->shoppingBag->removeProductFromShoppingBag($event->product());
     }
 } 

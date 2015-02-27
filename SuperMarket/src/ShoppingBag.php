@@ -2,6 +2,8 @@
 
 namespace CodingKatas\SuperMarket;
 
+use CodingKatas\SuperMarket\Events\ProductWasRemovedFromShoppingBag;
+
 class ShoppingBag
 {
     /**
@@ -31,6 +33,21 @@ class ShoppingBag
     }
 
     /**
+     * @param Product $product
+     */
+    public function removeProductFromShoppingBag(Product $product)
+    {
+        $id = $product->identity();
+        if (!isset($this->products[$id])) {
+            return;
+        }
+
+        if ($this->products[$id]['count'] > 0) {
+            $this->products[$id]['count']--;
+        }
+    }
+
+    /**
      * @return Product[]
      */
     public function productsInShoppingBag()
@@ -38,7 +55,9 @@ class ShoppingBag
         $res = [];
 
         foreach ($this->products as $pc) {
-            $res[] = $pc['object'];
+            if ($pc['count'] > 0) {
+                $res[] = $pc['object'];
+            }
         }
 
         return $res;
@@ -50,7 +69,7 @@ class ShoppingBag
      */
     public function isProductInShoppingBag(Product $product)
     {
-        return isset($this->products[$product->identity()]);
+        return isset($this->products[$product->identity()]) && $this->products[$product->identity()]['count'] > 0;
     }
 
     /**
