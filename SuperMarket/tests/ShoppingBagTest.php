@@ -27,7 +27,20 @@ class ShoppingBagTest extends \PHPUnit_Framework_TestCase
 
     public function test_is_product_in_shopping_bag_works_correctly()
     {
-        $shoppingBag = new ShoppingBag();
+        $product = $this->getMockBuilder(Product::class)->disableOriginalConstructor()->getMock();
+        $product->expects($this->any())
+            ->method("identity")
+            ->willReturn("id");
+        $data = [
+            'id' => [
+                'object' => $product,
+                'count' => 1
+            ]
+        ];
+
+        $shoppingBag = new ShoppingBag($data);
+
+        $this->assertTrue($shoppingBag->isProductInShoppingBag($product));
     }
 
     public function test_it_should_put_products_into_shoppingbag()
