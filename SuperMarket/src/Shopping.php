@@ -5,6 +5,7 @@ namespace CodingKatas\SuperMarket;
 use CodingKatas\SuperMarket\Event\AggregateIsNotProcessedException;
 use CodingKatas\SuperMarket\Event\AggregateRoot;
 use CodingKatas\SuperMarket\Event\EventHistory;
+use CodingKatas\SuperMarket\Events\CustomerStartedCheckoutProcess;
 use CodingKatas\SuperMarket\Events\CustomerStartedShopping;
 use CodingKatas\SuperMarket\Events\ProductWasPutIntoShoppingBag;
 use CodingKatas\SuperMarket\Events\ProductWasRemovedFromShoppingBag;
@@ -72,6 +73,14 @@ class Shopping extends AggregateRoot
     }
 
     /**
+     *
+     */
+    public function checkoutShopping()
+    {
+       $this->recordThat(new CustomerStartedCheckoutProcess());
+    }
+
+    /**
      * @return Customer
      * @throws AggregateIsNotProcessedException
      */
@@ -111,5 +120,17 @@ class Shopping extends AggregateRoot
     public function processProductWasRemovedFromShoppingBag(ProductWasRemovedFromShoppingBag $event)
     {
         $this->shoppingBag->removeProductFromShoppingBag($event->product());
+    }
+
+    public function processCustomerStartedCheckoutProcess(CustomerStartedCheckoutProcess $event)
+    {
+        // genereate sum
+        $invoiceSum = new Money(100, new Currency('Dollar', '$'));
+
+        if (!$this->customer->wallet()->hasEnoughMoneyToPay($invoiceSum)) {
+            // $this->recordThat(); invoice cant paid
+        } else {
+            // $this->recordThat() invoice was paid
+        }
     }
 } 

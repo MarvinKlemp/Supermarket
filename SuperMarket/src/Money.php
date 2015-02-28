@@ -39,4 +39,15 @@ class Money
     {
         return $this->currency;
     }
+
+    /**
+     * @TODO rework this one, the amount oof money has nothing to say this actually hacks the Money VO
+     *
+     * @param Money $money
+     * @return bool
+     */
+    public function isFewerMoneyThan(Money $money)
+    {
+        return ($this->amount < $money->amountOfMoney());
+    }
 } 

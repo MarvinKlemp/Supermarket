@@ -15,13 +15,19 @@ class Customer
     protected $name;
 
     /**
+     * @var Wallet
+     */
+    protected $wallet;
+
+    /**
      * @param int $id
      * @param string $name
      */
-    public function __construct($id, $name)
+    public function __construct($id, $name, Wallet $wallet)
     {
         $this->id = $id;
         $this->name = $name;
+        $this->wallet = $wallet;
     }
 
     /**
@@ -38,5 +44,13 @@ class Customer
     public function name()
     {
         return $this->name;
+    }
+
+    /**
+     * @return Wallet
+     */
+    public function wallet()
+    {
+        return $this->wallet;
     }
 } 
