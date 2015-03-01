@@ -1,8 +1,7 @@
 <?php
 
-namespace CodingKatas\SuperMarket\Tests\Checkout;
+namespace CodingKatas\SuperMarket\tests\Checkout;
 
 class InvoiceTest extends \PHPUnit_Framework_TestCase
 {
-
-} 
+}

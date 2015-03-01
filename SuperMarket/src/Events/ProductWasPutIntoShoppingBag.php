@@ -27,4 +27,4 @@ class ProductWasPutIntoShoppingBag extends DomainEvent
     {
         return $this->product;
     }
-} 
+}

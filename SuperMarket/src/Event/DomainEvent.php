@@ -10,4 +10,4 @@ abstract class DomainEvent
     {
         $this->recordedAt = new \DateTime('NOW');
     }
-} 
+}

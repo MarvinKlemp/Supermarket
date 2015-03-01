@@ -1,6 +1,6 @@
 <?php
 
-namespace CodingKatas\SuperMarket\Tests\Event;
+namespace CodingKatas\SuperMarket\tests\Event;
 
 use CodingKatas\SuperMarket\Event\DomainEvent;
 use CodingKatas\SuperMarket\Event\EventHistory;
@@ -30,4 +30,4 @@ class EventHistoryTest extends \PHPUnit_Framework_TestCase
         $history->recordThat($event);
         $this->assertContains($event, $history->getRecordedEvents());
     }
-} 
+}

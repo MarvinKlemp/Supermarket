@@ -1,6 +1,6 @@
 <?php
 
-namespace CodingKatas\SuperMarket\Tests\Payment;
+namespace CodingKatas\SuperMarket\tests\Payment;
 
 use CodingKatas\SuperMarket\Payment\Currency;
 use CodingKatas\SuperMarket\Payment\Money;
@@ -17,4 +17,4 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(100, $money->amountOfMoney());
         $this->assertSame($currency, $money->currency());
     }
-} 
+}

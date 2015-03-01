@@ -40,4 +40,4 @@ class EventHistory implements \Countable
     {
         return count($this->events);
     }
-} 
+}

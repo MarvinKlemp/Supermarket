@@ -22,9 +22,9 @@ class Product
     protected $price;
 
     /**
-     * @param int $id
+     * @param int    $id
      * @param string $name
-     * @param Money $price
+     * @param Money  $price
      */
     public function __construct($id, $name, Money $price)
     {
@@ -56,4 +56,4 @@ class Product
     {
         return $this->price;
     }
-} 
+}

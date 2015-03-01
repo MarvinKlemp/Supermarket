@@ -28,11 +28,11 @@ class Wallet
     }
 
     /**
-     * @param Money $money
+     * @param  Money $money
      * @return bool
      */
     public function hasEnoughMoneyToPay(Money $money)
     {
         return $this->money->isFewerMoneyThan($money);
     }
-} 
+}

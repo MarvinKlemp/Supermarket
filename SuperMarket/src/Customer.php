@@ -20,7 +20,7 @@ class Customer
     protected $wallet;
 
     /**
-     * @param int $id
+     * @param int    $id
      * @param string $name
      */
     public function __construct($id, $name, Wallet $wallet)
@@ -53,4 +53,4 @@ class Customer
     {
         return $this->wallet;
     }
-} 
+}

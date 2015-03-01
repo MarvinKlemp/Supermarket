@@ -41,7 +41,7 @@ abstract class AggregateRoot
      */
     private function process(DomainEvent $event)
     {
-        $method = "process" . (new \ReflectionClass($event))->getShortName();
+        $method = "process".(new \ReflectionClass($event))->getShortName();
         $this->$method($event);
     }
 
@@ -64,4 +64,4 @@ abstract class AggregateRoot
     {
         return $this->events;
     }
-} 
+}

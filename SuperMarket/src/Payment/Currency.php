@@ -39,4 +39,4 @@ class Currency
     {
         return $this->representation;
     }
-} 
+}

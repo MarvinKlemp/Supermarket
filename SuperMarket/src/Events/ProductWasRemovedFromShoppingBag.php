@@ -27,4 +27,4 @@ class ProductWasRemovedFromShoppingBag extends DomainEvent
     {
         return $this->product;
     }
-} 
+}

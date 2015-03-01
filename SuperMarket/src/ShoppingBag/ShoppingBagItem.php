@@ -18,7 +18,7 @@ class ShoppingBagItem
 
     /**
      * @param Product $product
-     * @param int $count
+     * @param int     $count
      */
     public function __construct(Product $product, $count)
     {
@@ -57,4 +57,4 @@ class ShoppingBagItem
     {
         return $this->product;
     }
-} 
+}

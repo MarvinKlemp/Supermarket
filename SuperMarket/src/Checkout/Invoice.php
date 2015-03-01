@@ -6,6 +6,5 @@ class Invoice
 {
     public function __construct()
     {
-
     }
-} 
+}

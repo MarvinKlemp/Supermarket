@@ -26,4 +26,4 @@ class CustomerStartedShopping extends DomainEvent
     {
         return $this->customer;
     }
-} 
+}

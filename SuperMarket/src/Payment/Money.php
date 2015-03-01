@@ -15,7 +15,7 @@ class Money
     protected $currency;
 
     /**
-     * @param int $amount
+     * @param int      $amount
      * @param Currency $currency
      */
     public function __construct($amount, Currency $currency)
@@ -43,11 +43,11 @@ class Money
     /**
      * @TODO rework this one, the amount oof money has nothing to say this actually hacks the Money VO
      *
-     * @param Money $money
+     * @param  Money $money
      * @return bool
      */
     public function isFewerMoneyThan(Money $money)
     {
         return ($this->amount < $money->amountOfMoney());
     }
-} 
+}

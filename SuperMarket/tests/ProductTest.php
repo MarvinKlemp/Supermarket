@@ -1,6 +1,6 @@
 <?php
 
-namespace CodingKatas\SuperMarket\Tests;
+namespace CodingKatas\SuperMarket\tests;
 
 use CodingKatas\SuperMarket\Payment\Money;
 use CodingKatas\SuperMarket\Product;
@@ -18,4 +18,4 @@ class ProductTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals("ball", $product->name());
         $this->assertSame($money, $product->price());
     }
-} 
+}

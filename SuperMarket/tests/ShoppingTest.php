@@ -1,6 +1,6 @@
 <?php
 
-namespace CodingKatas\SuperMarket\Tests;
+namespace CodingKatas\SuperMarket\tests;
 
 use CodingKatas\SuperMarket\Customer;
 use CodingKatas\SuperMarket\Event\AggregateIsNotProcessedException;
@@ -26,7 +26,6 @@ class ShoppingTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($shopping->getEventHistory(), $history);
     }
 
-
     public function test_it_should_record_the_customer_started_shopping_event()
     {
         $customer = $this->getMockBuilder(Customer::class)->disableOriginalConstructor()->getMock();
@@ -35,7 +34,6 @@ class ShoppingTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf(Shopping::class, $shopping);
         $this->assertSame($customer, $shopping->getEventHistory()->getRecordedEvents()[0]->customer());
     }
-
 
     public function test_it_should_apply_correct_if_customer_started_shopping()
     {
@@ -48,7 +46,6 @@ class ShoppingTest extends \PHPUnit_Framework_TestCase
 
     public function test_it_should_throw_an_aggregate_is_not_processed_exception()
     {
-
         $customer = $this->getMockBuilder(Customer::class)->disableOriginalConstructor()->getMock();
         $shopping = Shopping::startShopping($customer);
 
@@ -58,7 +55,6 @@ class ShoppingTest extends \PHPUnit_Framework_TestCase
         $this->setExpectedException(AggregateIsNotProcessedException::class);
         $shopping->getShoppingBag();
     }
-
 
     public function test_it_should_apply_correct_if_product_was_put_into_shopping_bag()
     {
@@ -91,4 +87,4 @@ class ShoppingTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($shopping->getShoppingBag()->isProductInShoppingBag($product));
         $this->assertSame(2, $shopping->getShoppingBag()->howOftenIsProductInShoppingBag($product));
     }
-} 
+}

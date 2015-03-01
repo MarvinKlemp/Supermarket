@@ -61,7 +61,7 @@ class ShoppingBag
     }
 
     /**
-     * @param Product $product
+     * @param  Product $product
      * @return bool
      */
     public function isProductInShoppingBag(Product $product)
@@ -70,7 +70,7 @@ class ShoppingBag
     }
 
     /**
-     * @param Product $product
+     * @param  Product $product
      * @return int
      */
     public function howOftenIsProductInShoppingBag(Product $product)
@@ -81,4 +81,4 @@ class ShoppingBag
 
         return $this->items[$product->identity()]->howOften();
     }
-} 
+}

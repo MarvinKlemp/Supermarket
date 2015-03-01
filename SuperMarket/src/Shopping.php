@@ -26,7 +26,7 @@ class Shopping extends AggregateRoot
 
     /**
      * @param EventHistory $events
-     * @param ShoppingBag $shoppingBag
+     * @param ShoppingBag  $shoppingBag
      */
     public function __construct(EventHistory $events = null, ShoppingBag $shoppingBag = null)
     {
@@ -37,7 +37,7 @@ class Shopping extends AggregateRoot
     }
 
     /**
-     * @param Customer $customer
+     * @param  Customer $customer
      * @return Shopping
      */
     public static function startShopping(Customer $customer)
@@ -49,7 +49,7 @@ class Shopping extends AggregateRoot
     }
 
     /**
-     * @param EventHistory $history
+     * @param  EventHistory $history
      * @return Shopping
      */
     public static function resumeShopping(EventHistory $history)
@@ -78,7 +78,7 @@ class Shopping extends AggregateRoot
      */
     public function checkoutShopping()
     {
-       $this->recordThat(new CustomerStartedCheckoutProcess());
+        $this->recordThat(new CustomerStartedCheckoutProcess());
     }
 
     /**
@@ -87,7 +87,7 @@ class Shopping extends AggregateRoot
      */
     public function getCustomer()
     {
-        if(!$this->isProcessed) {
+        if (!$this->isProcessed) {
             throw new AggregateIsNotProcessedException();
         }
 
@@ -100,7 +100,7 @@ class Shopping extends AggregateRoot
      */
     public function getShoppingBag()
     {
-        if(!$this->isProcessed) {
+        if (!$this->isProcessed) {
             throw new AggregateIsNotProcessedException();
         }
 
@@ -131,4 +131,4 @@ class Shopping extends AggregateRoot
             // $this->recordThat() invoice was paid
         }
     }
-} 
+}
