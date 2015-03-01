@@ -4,25 +4,29 @@ namespace CodingKatas\SuperMarket\Tests;
 
 use CodingKatas\SuperMarket\Product;
 use CodingKatas\SuperMarket\ShoppingBag;
+use CodingKatas\SuperMarket\ShoppingBagItem;
 
 class ShoppingBagTest extends \PHPUnit_Framework_TestCase
 {
     public function test_it_should_be_initializable()
     {
         $shoppingBag = new ShoppingBag();
+
+        $this->assertInstanceOf(ShoppingBag::class, $shoppingBag);
     }
 
     public function test_it_should_be_initializable_when_passing_an_array()
     {
+        /** @var ShoppingBagItem $data */
         $data = [
-            'id' => [
-                'object' => $this->getMockBuilder(Product::class)->disableOriginalConstructor()->getMock(),
-                'count' => 1
-            ]
+            'id' => new ShoppingBagItem(
+                $this->getMockBuilder(Product::class)->disableOriginalConstructor()->getMock(),
+                1
+            ),
         ];
         $shoppingBag = new ShoppingBag($data);
 
-        $this->assertSame([$data["id"]["object"]], $shoppingBag->productsInShoppingBag());
+        $this->assertSame([$data["id"]->product()], $shoppingBag->productsInShoppingBag());
     }
 
     public function test_is_product_in_shopping_bag_works_correctly()
@@ -32,10 +36,10 @@ class ShoppingBagTest extends \PHPUnit_Framework_TestCase
             ->method("identity")
             ->willReturn("id");
         $data = [
-            'id' => [
-                'object' => $product,
-                'count' => 1
-            ]
+            'id' => new ShoppingBagItem(
+                $product,
+                1
+            ),
         ];
 
         $shoppingBag = new ShoppingBag($data);
@@ -65,10 +69,10 @@ class ShoppingBagTest extends \PHPUnit_Framework_TestCase
             ->method("identity")
             ->willReturn("id");
         $data = [
-            'id' => [
-                'object' => $product,
-                'count' => 1
-            ]
+            'id' => new ShoppingBagItem(
+                $product,
+                1
+            ),
         ];
 
         $shoppingBag = new ShoppingBag($data);

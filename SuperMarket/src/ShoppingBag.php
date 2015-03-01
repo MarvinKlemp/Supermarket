@@ -5,13 +5,13 @@ namespace CodingKatas\SuperMarket;
 class ShoppingBag
 {
     /**
-     * @var Product[]
+     * @var ShoppingBagItem[]
      */
-    protected $products;
+    protected $items;
 
-    public function __construct(array $products = [])
+    public function __construct(array $items = [])
     {
-        $this->products = $products;
+        $this->items = $items;
     }
 
     /**
@@ -20,13 +20,10 @@ class ShoppingBag
     public function putProductIntoShoppingBag(Product $product)
     {
         $id = $product->identity();
-        if (!isset($this->products[$id])) {
-            $this->products[$id] = [
-                'object' => $product,
-                'count' => 1
-            ];
+        if (!isset($this->items[$id])) {
+            $this->items[$id] = new ShoppingBagItem($product, 1);
         } else {
-            $this->products[$id]['count']++;
+            $this->items[$id] = $this->items[$id]->oneMore();
         }
     }
 
@@ -36,12 +33,12 @@ class ShoppingBag
     public function removeProductFromShoppingBag(Product $product)
     {
         $id = $product->identity();
-        if (!isset($this->products[$id])) {
+        if (!isset($this->items[$id])) {
             return;
         }
 
-        if ($this->products[$id]['count'] > 0) {
-            $this->products[$id]['count']--;
+        if ($this->items[$id]->howOften() > 0) {
+            $this->items[$id] = $this->items[$id]->oneLess();
         }
     }
 
@@ -52,9 +49,9 @@ class ShoppingBag
     {
         $res = [];
 
-        foreach ($this->products as $pc) {
-            if ($pc['count'] > 0) {
-                $res[] = $pc['object'];
+        foreach ($this->items as $item) {
+            if ($item->howOften() > 0) {
+                $res[] = $item->product();
             }
         }
 
@@ -67,7 +64,7 @@ class ShoppingBag
      */
     public function isProductInShoppingBag(Product $product)
     {
-        return isset($this->products[$product->identity()]) && $this->products[$product->identity()]['count'] > 0;
+        return isset($this->items[$product->identity()]) && $this->items[$product->identity()]->howOften() > 0;
     }
 
     /**
@@ -80,6 +77,6 @@ class ShoppingBag
             return 0;
         }
 
-        return $this->products[$product->identity()]['count'];
+        return $this->items[$product->identity()]->howOften();
     }
 } 
