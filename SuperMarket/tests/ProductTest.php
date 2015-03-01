@@ -2,7 +2,7 @@
 
 namespace CodingKatas\SuperMarket\Tests;
 
-use CodingKatas\SuperMarket\Money;
+use CodingKatas\SuperMarket\Payment\Money;
 use CodingKatas\SuperMarket\Product;
 
 class ProductTest extends \PHPUnit_Framework_TestCase

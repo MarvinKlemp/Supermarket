@@ -124,9 +124,6 @@ class Shopping extends AggregateRoot
 
     public function processCustomerStartedCheckoutProcess(CustomerStartedCheckoutProcess $event)
     {
-        // genereate sum
-        $invoiceSum = new Money(100, new Currency('Dollar', '$'));
-
         if (!$this->customer->wallet()->hasEnoughMoneyToPay($invoiceSum)) {
             // $this->recordThat(); invoice cant paid
         } else {

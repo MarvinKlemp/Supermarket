@@ -2,8 +2,6 @@
 
 namespace CodingKatas\SuperMarket;
 
-use CodingKatas\SuperMarket\Events\ProductWasRemovedFromShoppingBag;
-
 class ShoppingBag
 {
     /**

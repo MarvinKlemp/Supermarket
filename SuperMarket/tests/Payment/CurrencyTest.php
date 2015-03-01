@@ -1,8 +1,8 @@
 <?php
 
-namespace CodingKatas\SuperMarket\Tests;
+namespace CodingKatas\SuperMarket\Tests\Payment;
 
-use CodingKatas\SuperMarket\Currency;
+use CodingKatas\SuperMarket\Payment\Currency;
 
 class CurrencyTest extends \PHPUnit_Framework_TestCase
 {

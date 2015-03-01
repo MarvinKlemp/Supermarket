@@ -2,6 +2,8 @@
 
 namespace CodingKatas\SuperMarket;
 
+use CodingKatas\SuperMarket\Payment\Money;
+
 class Product
 {
     /**

@@ -1,9 +1,9 @@
 <?php
 
-namespace CodingKatas\SuperMarket\Tests;
+namespace CodingKatas\SuperMarket\Tests\Payment;
 
-use CodingKatas\SuperMarket\Currency;
-use CodingKatas\SuperMarket\Money;
+use CodingKatas\SuperMarket\Payment\Currency;
+use CodingKatas\SuperMarket\Payment\Money;
 
 class MoneyTest extends \PHPUnit_Framework_TestCase
 {

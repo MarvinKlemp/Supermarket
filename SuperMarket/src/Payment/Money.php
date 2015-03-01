@@ -1,6 +1,6 @@
 <?php
 
-namespace CodingKatas\SuperMarket;
+namespace CodingKatas\SuperMarket\Payment;
 
 class Money
 {
