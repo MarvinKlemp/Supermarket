@@ -9,6 +9,7 @@ use CodingKatas\SuperMarket\Events\CustomerStartedCheckoutProcess;
 use CodingKatas\SuperMarket\Events\CustomerStartedShopping;
 use CodingKatas\SuperMarket\Events\ProductWasPutIntoShoppingBag;
 use CodingKatas\SuperMarket\Events\ProductWasRemovedFromShoppingBag;
+use CodingKatas\SuperMarket\ShoppingBag\ShoppingBag;
 
 class Shopping extends AggregateRoot
 {

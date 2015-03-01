@@ -3,8 +3,8 @@
 namespace CodingKatas\SuperMarket\Tests;
 
 use CodingKatas\SuperMarket\Product;
-use CodingKatas\SuperMarket\ShoppingBag;
-use CodingKatas\SuperMarket\ShoppingBagItem;
+use CodingKatas\SuperMarket\ShoppingBag\ShoppingBag;
+use CodingKatas\SuperMarket\ShoppingBag\ShoppingBagItem;
 
 class ShoppingBagTest extends \PHPUnit_Framework_TestCase
 {

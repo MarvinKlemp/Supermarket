@@ -1,6 +1,8 @@
 <?php
 
-namespace CodingKatas\SuperMarket;
+namespace CodingKatas\SuperMarket\ShoppingBag;
+
+use CodingKatas\SuperMarket\Product;
 
 class ShoppingBagItem
 {
