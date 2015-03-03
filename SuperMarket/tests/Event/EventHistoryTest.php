@@ -1,6 +1,6 @@
 <?php
 
-namespace CodingKatas\SuperMarket\tests\Event;
+namespace CodingKatas\SuperMarket\Tests\Event;
 
 use CodingKatas\SuperMarket\Event\DomainEvent;
 use CodingKatas\SuperMarket\Event\EventHistory;

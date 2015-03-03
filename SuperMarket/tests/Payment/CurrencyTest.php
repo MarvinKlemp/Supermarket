@@ -1,6 +1,6 @@
 <?php
 
-namespace CodingKatas\SuperMarket\tests\Payment;
+namespace CodingKatas\SuperMarket\Tests\Payment;
 
 use CodingKatas\SuperMarket\Payment\Currency;
 
