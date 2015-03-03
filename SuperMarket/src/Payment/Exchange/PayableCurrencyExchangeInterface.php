@@ -12,5 +12,5 @@ interface PayableCurrencyExchangeInterface
      * @return PayableInterface
      * @throws UnableToExchangeCurrenciesException
      */
-    public function exchangeCurrency(PayableInterface $payment, PayableInterface $payment2);
+    public function exchangeCurrencies(PayableInterface $payment, PayableInterface $payment2);
 } 

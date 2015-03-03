@@ -20,7 +20,7 @@ class InMemoryHardCashExchanger implements PayableCurrencyExchangeInterface
     /**
      * {@inheritDoc}
      */
-    public function exchangeCurrency(PayableInterface $aPayment, PayableInterface $anotherPayment)
+    public function exchangeCurrencies(PayableInterface $aPayment, PayableInterface $anotherPayment)
     {
         $index = $aPayment->currency()->name() . "-to-" . $anotherPayment->currency()->name();
 
