@@ -61,6 +61,14 @@ class ShoppingBag
     }
 
     /**
+     * @return ShoppingBagItem[]
+     */
+    public function itemsInShoppingBag()
+    {
+        return $this->items;
+    }
+
+    /**
      * @param  Product $product
      * @return bool
      */

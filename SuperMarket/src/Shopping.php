@@ -9,7 +9,9 @@ use CodingKatas\SuperMarket\Events\CustomerStartedCheckoutProcess;
 use CodingKatas\SuperMarket\Events\CustomerStartedShopping;
 use CodingKatas\SuperMarket\Events\ProductWasPutIntoShoppingBag;
 use CodingKatas\SuperMarket\Events\ProductWasRemovedFromShoppingBag;
+use CodingKatas\SuperMarket\Payment\Currency;
 use CodingKatas\SuperMarket\ShoppingBag\ShoppingBag;
+use CodingKatas\SuperMarket\Checkout\InvoiceCalculator;
 
 class Shopping extends AggregateRoot
 {
@@ -125,9 +127,13 @@ class Shopping extends AggregateRoot
 
     public function processCustomerStartedCheckoutProcess(CustomerStartedCheckoutProcess $event)
     {
-        if (!$this->customer->wallet()->hasEnoughMoneyToPay($invoiceSum)) {
+        $invoice = (new InvoiceCalculator(new Currency('dollar', '$')))->calculateInvoice($this->shoppingBag);
+
+        if (!$this->customer->wallet()->hasEnoughMoneyToPay($invoice->invoiceSum())) {
+            echo "hah"; print_r($invoice->invoiceSum());
             // $this->recordThat(); invoice cant paid
         } else {
+            echo "lol"; print_r($invoice->invoiceSum());
             // $this->recordThat() invoice was paid
         }
     }
