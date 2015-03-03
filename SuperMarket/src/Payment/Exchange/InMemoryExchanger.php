@@ -2,10 +2,10 @@
 
 namespace CodingKatas\SuperMarket\Payment\Exchange;
 
-use CodingKatas\SuperMarket\Payment\HardCash;
+use CodingKatas\SuperMarket\Payment\Currency;
 use CodingKatas\SuperMarket\Payment\PayableInterface;
 
-class InMemoryHardCashExchanger implements PayableCurrencyExchangeInterface
+class InMemoryExchanger implements PayableCurrencyExchangeInterface
 {
     protected $exchanges;
 
@@ -20,17 +20,18 @@ class InMemoryHardCashExchanger implements PayableCurrencyExchangeInterface
     /**
      * {@inheritDoc}
      */
-    public function exchangeCurrencies(PayableInterface $aPayment, PayableInterface $anotherPayment)
+    public function exchangeCurrencies(PayableInterface $aPayment, Currency $aCurrency)
     {
-        $index = $aPayment->currency()->name() . "-to-" . $anotherPayment->currency()->name();
+        $class = get_class($aPayment);
+        $index = $aPayment->currency()->name() . "-to-" . $aCurrency->name();
 
         if (!isset($this->exchanges[$index])) {
             throw new UnableToExchangeCurrenciesException();
         }
 
-        return new HardCash(
+        return new $class(
             $aPayment->amountOfCurrency() * $this->exchanges[$index]->exchangeFactor(),
-            $anotherPayment->currency()
+            $aCurrency
         );
     }
-} 
+}

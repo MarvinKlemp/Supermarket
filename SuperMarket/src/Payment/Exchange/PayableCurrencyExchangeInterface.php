@@ -2,15 +2,16 @@
 
 namespace CodingKatas\SuperMarket\Payment\Exchange;
 
+use CodingKatas\SuperMarket\Payment\Currency;
 use CodingKatas\SuperMarket\Payment\PayableInterface;
 
 interface PayableCurrencyExchangeInterface
 {
     /**
      * @param PayableInterface $payment
-     * @param PayableInterface $payment2
+     * @param Currency $aCurrency
      * @return PayableInterface
      * @throws UnableToExchangeCurrenciesException
      */
-    public function exchangeCurrencies(PayableInterface $payment, PayableInterface $payment2);
+    public function exchangeCurrencies(PayableInterface $payment, Currency $aCurrency);
 } 
