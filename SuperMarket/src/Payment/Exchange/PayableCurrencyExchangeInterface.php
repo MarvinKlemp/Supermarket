@@ -1,6 +1,6 @@
 <?php
 
-namespace CodingKatas\SuperMarket\Payment\Transformer;
+namespace CodingKatas\SuperMarket\Payment\Exchange;
 
 use CodingKatas\SuperMarket\Payment\PayableInterface;
 
