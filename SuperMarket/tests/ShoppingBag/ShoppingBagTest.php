@@ -15,9 +15,9 @@ class ShoppingBagTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf(ShoppingBag::class, $shoppingBag);
     }
 
-    public function test_it_should_be_initializable_when_passing_an_array()
+    public function test_it_should_be_initializable_when_passing_an_array_of_shopping_bag_items()
     {
-        /** @var ShoppingBagItem $data */
+        /** @var ShoppingBagItem[] $data */
         $data = [
             'id' => new ShoppingBagItem(
                 $this->getMockBuilder(Product::class)->disableOriginalConstructor()->getMock(),
@@ -29,7 +29,7 @@ class ShoppingBagTest extends \PHPUnit_Framework_TestCase
         $this->assertSame([$data["id"]->product()], $shoppingBag->productsInShoppingBag());
     }
 
-    public function test_is_product_in_shopping_bag_works_correctly()
+    public function test_is_product_in_shopping_bag_should_return_true()
     {
         $product = $this->getMockBuilder(Product::class)->disableOriginalConstructor()->getMock();
         $product->expects($this->any())
@@ -47,7 +47,19 @@ class ShoppingBagTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($shoppingBag->isProductInShoppingBag($product));
     }
 
-    public function test_it_should_put_products_into_shoppingbag()
+    public function test_is_product_in_shopping_bag_should_return_false()
+    {
+        $product = $this->getMockBuilder(Product::class)->disableOriginalConstructor()->getMock();
+        $product->expects($this->once())
+            ->method("identity")
+            ->willReturn("id");
+
+        $shoppingBag = new ShoppingBag();
+
+        $this->assertFalse($shoppingBag->isProductInShoppingBag($product));
+    }
+
+    public function test_it_should_put_products_into_shopping_bag()
     {
         $product = $this->getMockBuilder(Product::class)->disableOriginalConstructor()->getMock();
         $product->expects($this->any())
@@ -62,7 +74,7 @@ class ShoppingBagTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(1, $shoppingBag->howOftenIsProductInShoppingBag($product));
     }
 
-    public function test_it_should_remove_products_from_shoppingbag()
+    public function test_it_should_remove_products_from_shopping_bag()
     {
         $product = $this->getMockBuilder(Product::class)->disableOriginalConstructor()->getMock();
         $product->expects($this->any())

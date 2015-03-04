@@ -23,7 +23,7 @@ class ShoppingBag
     {
         $id = $product->identity();
         if (!isset($this->items[$id])) {
-            $this->items[$id] = new ShoppingBagItem($product, 1);
+            $this->items[$id] = new ShoppingBagItem($product);
         } else {
             $this->items[$id] = $this->items[$id]->oneMore();
         }

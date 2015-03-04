@@ -20,7 +20,7 @@ class ShoppingBagItem
      * @param Product $product
      * @param int     $count
      */
-    public function __construct(Product $product, $count)
+    public function __construct(Product $product, $count = 1)
     {
         $this->product = $product;
         $this->count = $count;
