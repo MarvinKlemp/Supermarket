@@ -2,8 +2,8 @@
 
 namespace CodingKatas\SuperMarket\Checkout;
 
-use CodingKatas\SuperMarket\Payment\Currency;
-use CodingKatas\SuperMarket\Payment\Money;
+use CodingKatas\SuperMarket\ShoppingBag\ShoppingBag;
+use CodingKatas\SuperMarket\ShoppingBag\ShoppingBagItem;
 
 class Invoice
 {
@@ -13,32 +13,37 @@ class Invoice
     protected $items;
 
     /**
-     * @var Currency
+     * @param $invoiceItems[ $items
      */
-    protected $currency;
-
-    /**
-     * @param array $items
-     * @param Currency $currency
-     */
-    public function __construct(array $items = [], Currency $currency)
+    protected function __construct(array $items = [])
     {
         $this->items = $items;
-        $this->currency = $currency;
+    }
+
+    public static function fromShoppingBag(ShoppingBag $aShoppingBag)
+    {
+        /** @var $invoiceItems[] $invoiceItems */
+        $invoiceItems = [];
+
+        /** @var ShoppingBagItem $item */
+        foreach ($aShoppingBag->itemsInShoppingBag() as $anItem) {
+            $invoiceItems[] = InvoiceItem::fromShoppingBagItem($anItem);
+        }
+
+        return new Invoice($invoiceItems);
     }
 
     /**
-     * @return Money
+     * int
      */
-    public function invoiceSum()
+    public function totalSum()
     {
-        $sum = new Money(0, $this->currency);
+        $totalSum = 0;
 
-        /** @var InvoiceItem $item */
         foreach ($this->items as $item) {
-            $sum = $sum->add($item->product()->price(), $item->howOften());
+            $totalSum += ($item->product()->price()->amountOfCurrency() * $item->howOften());
         }
 
-        return $sum;
+        return $totalSum;
     }
 }

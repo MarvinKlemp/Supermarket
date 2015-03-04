@@ -2,7 +2,7 @@
 
 namespace CodingKatas\SuperMarket;
 
-use CodingKatas\SuperMarket\Payment\Money;
+use CodingKatas\SuperMarket\Payment\PayableInterface;
 
 class Product
 {
@@ -17,16 +17,16 @@ class Product
     protected $name;
 
     /**
-     * @var Money
+     * @var PayableInterface
      */
     protected $price;
 
     /**
      * @param int    $id
      * @param string $name
-     * @param Money  $price
+     * @param PayableInterface  $price
      */
-    public function __construct($id, $name, Money $price)
+    public function __construct($id, $name, PayableInterface $price)
     {
         $this->id = $id;
         $this->name = $name;
@@ -50,7 +50,7 @@ class Product
     }
 
     /**
-     * @return Money
+     * @return PayableInterface
      */
     public function price()
     {

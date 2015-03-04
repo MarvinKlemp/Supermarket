@@ -36,11 +36,17 @@ class InvoiceItem
         return new InvoiceItem($item->product(), $item->howOften());
     }
 
+    /**
+     * @return Product
+     */
     public function product()
     {
         return $this->product;
     }
 
+    /**
+     * @return int
+     */
     public function howOften()
     {
         return $this->count;

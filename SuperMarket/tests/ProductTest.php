@@ -3,13 +3,14 @@
 namespace CodingKatas\SuperMarket\Tests;
 
 use CodingKatas\SuperMarket\Payment\Money;
+use CodingKatas\SuperMarket\Payment\PayableInterface;
 use CodingKatas\SuperMarket\Product;
 
 class ProductTest extends \PHPUnit_Framework_TestCase
 {
     public function test_it_should_be_initializable()
     {
-        $money = $this->getMockBuilder(Money::class)->disableOriginalConstructor()->getMock();
+        $money = $this->getMockBuilder(PayableInterface::class)->getMockForAbstractClass();
 
         $product = new Product(1, "ball", $money);
 
