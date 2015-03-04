@@ -45,7 +45,7 @@ class HardCash implements PayableInterface
      */
     public function representation()
     {
-        return $this->amountOfCurrency . ' ' . $this->currency->representation();
+        return $this->amountOfCurrency.' '.$this->currency->representation();
     }
 
     /**

@@ -19,7 +19,7 @@ class WalletTest extends \PHPUnit_Framework_TestCase
     {
         $hardcash = $this->getMockBuilder(HardCash::class)->disableOriginalConstructor()->getMock();
         $wallet = new Wallet([
-            'hardcash' => $hardcash
+            'hardcash' => $hardcash,
         ]);
 
         $this->assertSame($hardcash, $wallet->hardcashInWallet());
@@ -38,7 +38,7 @@ class WalletTest extends \PHPUnit_Framework_TestCase
 
         $wallet = new Wallet([
             'aPayable' => $aPayable,
-            'anotherPayable' => $anotherPayable
+            'anotherPayable' => $anotherPayable,
         ]);
 
         $this->assertSame(3442, $wallet->totalAmount());
@@ -62,9 +62,9 @@ class WalletTest extends \PHPUnit_Framework_TestCase
 
         $wallet = new Wallet([
             'aPayable' => $aPayable,
-            'anotherPayable' => $anotherPayable
+            'anotherPayable' => $anotherPayable,
         ]);
 
         $this->assertTrue($wallet->enoughMoneyToPay($payment));
     }
-} 
+}

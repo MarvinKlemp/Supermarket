@@ -61,7 +61,7 @@ class InvoiceTest extends \PHPUnit_Framework_TestCase
             ->method('itemsInShoppingBag')
             ->willReturn([
                 "id1" => $aShoppingBagItem,
-                "id2" => $anotherShoppingBagItem
+                "id2" => $anotherShoppingBagItem,
             ]);
 
         $anInvoice = Invoice::fromShoppingBag($aShoppingBag);

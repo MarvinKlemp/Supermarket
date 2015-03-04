@@ -19,7 +19,7 @@ class InvoiceItem
 
     /**
      * @param Product $product
-     * @param int $count
+     * @param int     $count
      */
     protected function __construct(Product $product, $count)
     {
@@ -28,7 +28,7 @@ class InvoiceItem
     }
 
     /**
-     * @param ShoppingBagItem $item
+     * @param  ShoppingBagItem $item
      * @return InvoiceItem
      */
     public static function fromShoppingBagItem(ShoppingBagItem $item)

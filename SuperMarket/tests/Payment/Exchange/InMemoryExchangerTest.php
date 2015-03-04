@@ -56,7 +56,7 @@ class InMemoryExchangerTest extends \PHPUnit_Framework_TestCase
             ->method('exchangeFactor')
             ->willReturn(12);
         $exchanger = new InMemoryExchanger([
-            'dollar-to-euro' => $exchange
+            'dollar-to-euro' => $exchange,
         ]);
 
         $exchangedPayment = $exchanger->exchangeCurrencies($aPayment, $anotherCurrency);
@@ -64,4 +64,4 @@ class InMemoryExchangerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(1200, $exchangedPayment->amountOfCurrency());
         $this->assertSame($anotherCurrency, $exchangedPayment->currency());
     }
-} 
+}

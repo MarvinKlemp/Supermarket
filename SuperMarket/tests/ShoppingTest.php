@@ -5,11 +5,8 @@ namespace CodingKatas\SuperMarket\Tests;
 use CodingKatas\SuperMarket\Customer;
 use CodingKatas\SuperMarket\Event\AggregateIsNotProcessedException;
 use CodingKatas\SuperMarket\Event\EventHistory;
-use CodingKatas\SuperMarket\Payment\Currency;
-use CodingKatas\SuperMarket\Payment\Money;
 use CodingKatas\SuperMarket\Product;
 use CodingKatas\SuperMarket\Shopping;
-use CodingKatas\SuperMarket\Wallet;
 
 class ShoppingTest extends \PHPUnit_Framework_TestCase
 {

@@ -23,7 +23,7 @@ class InMemoryExchanger implements PayableCurrencyExchangeInterface
     public function exchangeCurrencies(PayableInterface $aPayment, Currency $aCurrency)
     {
         $class = get_class($aPayment);
-        $index = $aPayment->currency()->name() . "-to-" . $aCurrency->name();
+        $index = $aPayment->currency()->name()."-to-".$aCurrency->name();
 
         if (!isset($this->exchanges[$index])) {
             throw new UnableToExchangeCurrenciesException();

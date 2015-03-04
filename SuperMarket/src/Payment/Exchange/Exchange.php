@@ -21,4 +21,4 @@ class Exchange
     {
         return $this->factor;
     }
-} 
+}

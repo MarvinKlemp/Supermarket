@@ -33,7 +33,7 @@ class Wallet
     }
 
     /**
-     * @param PayableInterface $payment
+     * @param  PayableInterface $payment
      * @return bool
      */
     public function enoughMoneyToPay(PayableInterface $payment)

@@ -57,7 +57,7 @@ class Customer
     }
 
     /**
-     * @param PayableInterface $payment
+     * @param  PayableInterface $payment
      * @return bool
      */
     public function isAbleToPay(PayableInterface $payment)

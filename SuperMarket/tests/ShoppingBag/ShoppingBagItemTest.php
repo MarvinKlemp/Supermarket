@@ -51,4 +51,4 @@ class ShoppingBagItemTest extends \PHPUnit_Framework_TestCase
         $item = $item->oneLess();
         $this->assertSame(0, $item->howOften());
     }
-} 
+}

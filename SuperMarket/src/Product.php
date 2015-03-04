@@ -22,9 +22,9 @@ class Product
     protected $price;
 
     /**
-     * @param int    $id
-     * @param string $name
-     * @param PayableInterface  $price
+     * @param int              $id
+     * @param string           $name
+     * @param PayableInterface $price
      */
     public function __construct($id, $name, PayableInterface $price)
     {

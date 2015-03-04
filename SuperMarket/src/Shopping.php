@@ -130,10 +130,12 @@ class Shopping extends AggregateRoot
         $invoice = (new InvoiceCalculator(new Currency('dollar', '$')))->calculateInvoice($this->shoppingBag);
 
         if (!$this->customer->wallet()->hasEnoughMoneyToPay($invoice->invoiceSum())) {
-            echo "hah"; print_r($invoice->invoiceSum());
+            echo "hah";
+            print_r($invoice->invoiceSum());
             // $this->recordThat(); invoice cant paid
         } else {
-            echo "lol"; print_r($invoice->invoiceSum());
+            echo "lol";
+            print_r($invoice->invoiceSum());
             // $this->recordThat() invoice was paid
         }
     }
