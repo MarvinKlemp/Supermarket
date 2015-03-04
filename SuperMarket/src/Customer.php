@@ -2,6 +2,8 @@
 
 namespace CodingKatas\SuperMarket;
 
+use CodingKatas\SuperMarket\Payment\PayableInterface;
+
 class Customer
 {
     /**
@@ -52,5 +54,14 @@ class Customer
     public function wallet()
     {
         return $this->wallet;
+    }
+
+    /**
+     * @param PayableInterface $payment
+     * @return bool
+     */
+    public function isAbleToPay(PayableInterface $payment)
+    {
+        return $this->wallet->enoughMoneyToPay($payment);
     }
 }

@@ -49,6 +49,14 @@ class HardCash implements PayableInterface
     }
 
     /**
+     * @return string
+     */
+    public function name()
+    {
+        return 'hardcash';
+    }
+
+    /**
      * @param HardCash $money
      */
     public function isLessThan(HardCash $hardCash)

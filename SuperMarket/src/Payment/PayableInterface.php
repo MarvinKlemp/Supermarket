@@ -18,4 +18,9 @@ interface PayableInterface
      * @return string
      */
     public function representation();
+
+    /**
+     * @return string
+     */
+    public function name();
 } 
