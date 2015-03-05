@@ -13,11 +13,11 @@ class ProductWasPutIntoShoppingBag extends DomainEvent
     protected $product;
 
     /**
-     * @param Product $product
+     * @param Product $aProduct
      */
-    public function __construct(Product $product)
+    public function __construct(Product $aProduct)
     {
-        $this->product = $product;
+        $this->product = $aProduct;
     }
 
     /**

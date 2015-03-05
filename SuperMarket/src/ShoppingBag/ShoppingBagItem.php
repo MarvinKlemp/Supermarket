@@ -17,12 +17,12 @@ class ShoppingBagItem
     protected $count;
 
     /**
-     * @param Product $product
+     * @param Product $aProduct
      * @param int     $count
      */
-    public function __construct(Product $product, $count = 1)
+    public function __construct(Product $aProduct, $count = 1)
     {
-        $this->product = $product;
+        $this->product = $aProduct;
         $this->count = $count;
     }
 

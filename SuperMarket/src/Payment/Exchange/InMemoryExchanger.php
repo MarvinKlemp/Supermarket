@@ -7,6 +7,9 @@ use CodingKatas\SuperMarket\Payment\PayableInterface;
 
 class InMemoryExchanger implements PayableCurrencyExchangeInterface
 {
+    /**
+     * @var Exchange[]
+     */
     protected $exchanges;
 
     /**
@@ -20,17 +23,17 @@ class InMemoryExchanger implements PayableCurrencyExchangeInterface
     /**
      * {@inheritDoc}
      */
-    public function exchangeCurrencies(PayableInterface $aPayment, Currency $aCurrency)
+    public function exchangeCurrencies(PayableInterface $aPayable, Currency $aCurrency)
     {
-        $class = get_class($aPayment);
-        $index = $aPayment->currency()->name()."-to-".$aCurrency->name();
+        $class = get_class($aPayable);
+        $index = $aPayable->currency()->name()."-to-".$aCurrency->name();
 
         if (!isset($this->exchanges[$index])) {
             throw new UnableToExchangeCurrenciesException();
         }
 
         return new $class(
-            $aPayment->amountOfCurrency() * $this->exchanges[$index]->exchangeFactor(),
+            $aPayable->amountOfCurrency() * $this->exchanges[$index]->exchangeFactor(),
             $aCurrency
         );
     }

@@ -18,22 +18,22 @@ class InvoiceItem
     protected $count;
 
     /**
-     * @param Product $product
-     * @param int     $count
+     * @param Product $aProduct
+     * @param int $productCount
      */
-    protected function __construct(Product $product, $count)
+    protected function __construct(Product $aProduct, $productCount = 1)
     {
-        $this->product = $product;
-        $this->count = $count;
+        $this->product = $aProduct;
+        $this->count = $productCount;
     }
 
     /**
-     * @param  ShoppingBagItem $item
+     * @param ShoppingBagItem $anItem
      * @return InvoiceItem
      */
-    public static function fromShoppingBagItem(ShoppingBagItem $item)
+    public static function fromShoppingBagItem(ShoppingBagItem $anItem)
     {
-        return new InvoiceItem($item->product(), $item->howOften());
+        return new InvoiceItem($anItem->product(), $anItem->howOften());
     }
 
     /**

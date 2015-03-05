@@ -33,12 +33,12 @@ class Wallet
     }
 
     /**
-     * @param  PayableInterface $payment
+     * @param  PayableInterface $aPayable
      * @return bool
      */
-    public function enoughMoneyToPay(PayableInterface $payment)
+    public function enoughMoneyToPay(PayableInterface $aPayable)
     {
-        return $this->totalAmount() >= $payment->amountOfCurrency();
+        return $this->totalAmount() >= $aPayable->amountOfCurrency();
     }
 
     /**

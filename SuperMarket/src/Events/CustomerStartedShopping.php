@@ -13,15 +13,18 @@ class CustomerStartedShopping extends DomainEvent
     protected $customer;
 
     /**
-     * @param Customer $customer
+     * @param Customer $aCustomer
      */
-    public function __construct(Customer $customer)
+    public function __construct(Customer $aCustomer)
     {
         parent::__construct();
 
-        $this->customer = $customer;
+        $this->customer = $aCustomer;
     }
 
+    /**
+     * @return Customer
+     */
     public function customer()
     {
         return $this->customer;

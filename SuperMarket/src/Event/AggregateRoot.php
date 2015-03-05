@@ -7,7 +7,7 @@ abstract class AggregateRoot
     /**
      * @var EventHistory
      */
-    protected $events;
+    protected $history;
 
     /**
      * @var bool
@@ -15,34 +15,34 @@ abstract class AggregateRoot
     protected $isProcessed;
 
     /**
-     * @param EventHistory $events
+     * @param EventHistory $aHistory
      */
-    public function __construct(EventHistory $events = null)
+    public function __construct(EventHistory $aHistory = null)
     {
-        if ($events === null) {
-            $this->events = new EventHistory();
+        if ($aHistory === null) {
+            $this->history = new EventHistory();
         } else {
-            $this->events = $events;
+            $this->history = $aHistory;
         }
 
         $this->isProcessed = false;
     }
 
     /**
-     * @param DomainEvent $event
+     * @param DomainEvent $anEvent
      */
-    public function recordThat(DomainEvent $event)
+    public function recordThat(DomainEvent $anEvent)
     {
-        $this->events->recordThat($event);
+        $this->history->recordThat($anEvent);
     }
 
     /**
-     * @param DomainEvent $event
+     * @param DomainEvent $anEvent
      */
-    private function process(DomainEvent $event)
+    private function process(DomainEvent $anEvent)
     {
-        $method = "process".(new \ReflectionClass($event))->getShortName();
-        $this->$method($event);
+        $method = "process".(new \ReflectionClass($anEvent))->getShortName();
+        $this->$method($anEvent);
     }
 
     /**
@@ -50,8 +50,8 @@ abstract class AggregateRoot
      */
     public function processHistory()
     {
-        foreach ($this->events->getRecordedEvents() as $event) {
-            $this->process($event);
+        foreach ($this->history->getRecordedEvents() as $anEvent) {
+            $this->process($anEvent);
         }
 
         $this->isProcessed = true;
@@ -62,6 +62,6 @@ abstract class AggregateRoot
      */
     public function getEventHistory()
     {
-        return $this->events;
+        return $this->history;
     }
 }

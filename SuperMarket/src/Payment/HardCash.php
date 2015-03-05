@@ -15,13 +15,13 @@ class HardCash implements PayableInterface
     protected $currency;
 
     /**
-     * @param int      $amount
-     * @param Currency $currency
+     * @param $amountOfCurrency
+     * @param Currency $aCurrency
      */
-    public function __construct($amountOfCurrency, Currency $currency)
+    public function __construct($amountOfCurrency, Currency $aCurrency)
     {
         $this->amountOfCurrency = $amountOfCurrency;
-        $this->currency = $currency;
+        $this->currency = $aCurrency;
     }
 
     /**

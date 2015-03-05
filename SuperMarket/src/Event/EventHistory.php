@@ -18,11 +18,11 @@ class EventHistory implements \Countable
     }
 
     /**
-     * @param DomainEvent $event
+     * @param DomainEvent $anEvent
      */
-    public function recordThat(DomainEvent $event)
+    public function recordThat(DomainEvent $anEvent)
     {
-        $this->events[] = $event;
+        $this->events[] = $anEvent;
     }
 
     /**

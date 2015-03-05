@@ -13,13 +13,17 @@ class Invoice
     protected $items;
 
     /**
-     * @param $invoiceItems[ $items
+     * @param $invoiceItems[] $items
      */
     protected function __construct(array $items = [])
     {
         $this->items = $items;
     }
 
+    /**
+     * @param ShoppingBag $aShoppingBag
+     * @return Invoice
+     */
     public static function fromShoppingBag(ShoppingBag $aShoppingBag)
     {
         /** @var $invoiceItems[] $invoiceItems */

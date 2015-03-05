@@ -15,13 +15,13 @@ class Currency
     public $representation;
 
     /**
-     * @param string $name
-     * @param string $representation
+     * @param $aName
+     * @param $aRepresentation
      */
-    public function __construct($name, $representation)
+    public function __construct($aName, $aRepresentation)
     {
-        $this->name = $name;
-        $this->representation = $representation;
+        $this->name = $aName;
+        $this->representation = $aRepresentation;
     }
 
     /**

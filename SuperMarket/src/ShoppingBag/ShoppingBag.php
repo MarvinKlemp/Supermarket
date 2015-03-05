@@ -17,24 +17,24 @@ class ShoppingBag
     }
 
     /**
-     * @param Product $product
+     * @param Product $aProduct
      */
-    public function putProductIntoShoppingBag(Product $product)
+    public function putProductIntoShoppingBag(Product $aProduct)
     {
-        $id = $product->identity();
+        $id = $aProduct->identity();
         if (!isset($this->items[$id])) {
-            $this->items[$id] = new ShoppingBagItem($product);
+            $this->items[$id] = new ShoppingBagItem($aProduct);
         } else {
             $this->items[$id] = $this->items[$id]->oneMore();
         }
     }
 
     /**
-     * @param Product $product
+     * @param Product $aProduct
      */
-    public function removeProductFromShoppingBag(Product $product)
+    public function removeProductFromShoppingBag(Product $aProduct)
     {
-        $id = $product->identity();
+        $id = $aProduct->identity();
         if (!isset($this->items[$id])) {
             return;
         }
@@ -69,24 +69,24 @@ class ShoppingBag
     }
 
     /**
-     * @param  Product $product
+     * @param  Product $aProduct
      * @return bool
      */
-    public function isProductInShoppingBag(Product $product)
+    public function isProductInShoppingBag(Product $aProduct)
     {
-        return isset($this->items[$product->identity()]) && $this->items[$product->identity()]->howOften() > 0;
+        return isset($this->items[$aProduct->identity()]) && $this->items[$aProduct->identity()]->howOften() > 0;
     }
 
     /**
-     * @param  Product $product
+     * @param  Product $aProduct
      * @return int
      */
-    public function howOftenIsProductInShoppingBag(Product $product)
+    public function howOftenIsProductInShoppingBag(Product $aProduct)
     {
-        if (!$this->isProductInShoppingBag($product)) {
+        if (!$this->isProductInShoppingBag($aProduct)) {
             return 0;
         }
 
-        return $this->items[$product->identity()]->howOften();
+        return $this->items[$aProduct->identity()]->howOften();
     }
 }

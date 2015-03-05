@@ -10,11 +10,11 @@ class Exchange
     protected $factor;
 
     /**
-     * @param int $factor
+     * @param int $aExchangeFactor
      */
-    public function __construct($factor)
+    public function __construct($aExchangeFactor)
     {
-        $this->factor = $factor;
+        $this->factor = $aExchangeFactor;
     }
 
     public function exchangeFactor()
