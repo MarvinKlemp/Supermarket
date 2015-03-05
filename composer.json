@@ -1,6 +1,6 @@
 {
-    "name": "codingkatas/supermarket",
-    "description": "Coding Katas",
+    "name": "marvinklemp/supermarket",
+    "description": "A mostly Domain Driven Supermarket. Please beware this is a research project!",
     "license": "MIT",
     "authors": [
         {

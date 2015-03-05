@@ -8,8 +8,8 @@ use CodingKatas\SuperMarket\Payment\PayableInterface;
 interface PayableCurrencyExchangeInterface
 {
     /**
-     * @param PayableInterface $aPayable
-     * @param Currency $aCurrency
+     * @param  PayableInterface                    $aPayable
+     * @param  Currency                            $aCurrency
      * @return PayableInterface
      * @throws UnableToExchangeCurrenciesException
      */

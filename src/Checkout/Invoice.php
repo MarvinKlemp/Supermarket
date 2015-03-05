@@ -21,7 +21,7 @@ class Invoice
     }
 
     /**
-     * @param ShoppingBag $aShoppingBag
+     * @param  ShoppingBag $aShoppingBag
      * @return Invoice
      */
     public static function fromShoppingBag(ShoppingBag $aShoppingBag)
