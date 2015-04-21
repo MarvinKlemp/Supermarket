@@ -17,7 +17,7 @@ abstract class AggregateRoot
     /**
      * @param EventHistory $aHistory
      */
-    public function __construct(EventHistory $aHistory = null)
+    protected function __construct(EventHistory $aHistory = null)
     {
         if ($aHistory === null) {
             $this->history = new EventHistory();

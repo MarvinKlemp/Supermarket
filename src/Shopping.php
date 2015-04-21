@@ -2,16 +2,13 @@
 
 namespace CodingKatas\SuperMarket;
 
-use CodingKatas\SuperMarket\Event\AggregateIsNotProcessedException;
 use CodingKatas\SuperMarket\Event\AggregateRoot;
 use CodingKatas\SuperMarket\Event\EventHistory;
 use CodingKatas\SuperMarket\Events\CustomerStartedCheckoutProcess;
 use CodingKatas\SuperMarket\Events\CustomerStartedShopping;
 use CodingKatas\SuperMarket\Events\ProductWasPutIntoShoppingBag;
 use CodingKatas\SuperMarket\Events\ProductWasRemovedFromShoppingBag;
-use CodingKatas\SuperMarket\Payment\Currency;
 use CodingKatas\SuperMarket\ShoppingBag\ShoppingBag;
-use CodingKatas\SuperMarket\Checkout\InvoiceCalculator;
 
 class Shopping extends AggregateRoot
 {
@@ -30,7 +27,7 @@ class Shopping extends AggregateRoot
      * @param EventHistory $events
      * @param ShoppingBag  $shoppingBag
      */
-    public function __construct(EventHistory $events = null, ShoppingBag $shoppingBag = null)
+    protected  function __construct(EventHistory $events = null, ShoppingBag $shoppingBag = null)
     {
         parent::__construct($events);
 
@@ -44,8 +41,9 @@ class Shopping extends AggregateRoot
      */
     public static function startShopping(Customer $customer)
     {
-        $shopping = new Shopping();
+
         $shopping->recordThat(new CustomerStartedShopping($customer));
+        $shopping->processHistory();
 
         return $shopping;
     }
@@ -56,7 +54,10 @@ class Shopping extends AggregateRoot
      */
     public static function resumeShopping(EventHistory $history)
     {
-        return new Shopping($history);
+        $shopping = new Shopping($history);
+        $shopping->processHistory();
+
+        return $shopping;
     }
 
     /**
@@ -64,7 +65,8 @@ class Shopping extends AggregateRoot
      */
     public function putProductIntoProductBag(Product $product)
     {
-        $this->recordThat(new ProductWasPutIntoShoppingBag($product));
+        $this->recordThat($event = new ProductWasPutIntoShoppingBag($product));
+        $this->processProductWasPutIntoShoppingBag($event);
     }
 
     /**
@@ -72,7 +74,8 @@ class Shopping extends AggregateRoot
      */
     public function removeProductFromShoppingBag(Product $product)
     {
-        $this->recordThat(new ProductWasRemovedFromShoppingBag($product));
+        $this->recordThat(new ProductWasRemovedFromShoppingBag($event = $product));
+        $this->processProductWasRemovedFromShoppingBag($event);
     }
 
     /**
@@ -80,32 +83,24 @@ class Shopping extends AggregateRoot
      */
     public function checkoutShopping()
     {
+       // guard this one
+
         $this->recordThat(new CustomerStartedCheckoutProcess());
     }
 
     /**
      * @return Customer
-     * @throws AggregateIsNotProcessedException
      */
     public function getCustomer()
     {
-        if (!$this->isProcessed) {
-            throw new AggregateIsNotProcessedException();
-        }
-
         return $this->customer;
     }
 
     /**
      * @return ShoppingBag
-     * @throws AggregateIsNotProcessedException
      */
     public function getShoppingBag()
     {
-        if (!$this->isProcessed) {
-            throw new AggregateIsNotProcessedException();
-        }
-
         return $this->shoppingBag;
     }
 
