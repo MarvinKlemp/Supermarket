@@ -20,12 +20,12 @@
     },
     "autoload": {
         "psr-4": {
-            "CodingKatas\\SuperMarket\\": "src/"
+            "MarvinKlemp\\SuperMarket\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "CodingKatas\\SuperMarket\\Tests\\": "tests/"
+            "MarvinKlemp\\SuperMarket\\Tests\\": "tests/"
         }
     }
 }
