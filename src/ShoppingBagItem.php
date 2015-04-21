@@ -2,15 +2,21 @@
 
 namespace MarvinKlemp\SuperMarket;
 
-class ShoppingBagItem implements BuyableInterface {
-
+class ShoppingBagItem implements BuyableInterface
+{
+    /**
+     * @var BuyableInterface
+     */
     protected $item;
 
+    /**
+     * @var int
+     */
     protected $count;
 
     /**
      * @param BuyableInterface $item
-     * @param int $count
+     * @param int              $count
      */
     public function __construct(BuyableInterface $item, $count)
     {
@@ -25,4 +31,4 @@ class ShoppingBagItem implements BuyableInterface {
     {
         return $this->item->costs() * $this->count;
     }
-} 
+}

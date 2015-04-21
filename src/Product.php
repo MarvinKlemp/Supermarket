@@ -24,4 +24,4 @@ class Product implements BuyableInterface
     {
         return $this->costs;
     }
-} 
+}

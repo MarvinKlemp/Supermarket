@@ -11,4 +11,4 @@ class ShoppingBag implements BuyableInterface
     {
         // TODO: Implement costs() method.
     }
-} 
+}

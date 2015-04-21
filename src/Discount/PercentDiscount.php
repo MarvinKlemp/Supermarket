@@ -18,7 +18,7 @@ final class PercentDiscount implements BuyableInterface
 
     /**
      * @param BuyableInterface $item
-     * @param double $percentageDiscount
+     * @param double           $percentageDiscount
      */
     public function __construct(BuyableInterface $item, $percentageDiscount)
     {
@@ -33,4 +33,4 @@ final class PercentDiscount implements BuyableInterface
     {
         return $this->item->costs() * $this->percentageDiscount;
     }
-} 
+}
