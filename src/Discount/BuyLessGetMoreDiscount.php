@@ -26,4 +26,4 @@ class BuyLessGetMoreDiscount implements BuyableInterface
     {
         return $this->item->costs() * $this->purchased;
     }
-} 
+}

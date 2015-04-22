@@ -25,4 +25,4 @@ class BuyLessGetMoreDiscountTest extends \PHPUnit_Framework_TestCase
         $shoppingBagItem = new BuyLessGetMoreDiscount($buyable, 2, 3);
         $this->assertEquals(20, $shoppingBagItem->costs());
     }
-} 
+}

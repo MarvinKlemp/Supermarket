@@ -7,7 +7,7 @@ use MarvinKlemp\SuperMarket\BuyableInterface;
 final class BuyableCollection extends \SplObjectStorage
 {
     /**
-     * @param BuyableInterface $buyable
+     * @param  BuyableInterface $buyable
      * @return bool
      */
     public function contains(BuyableInterface $buyable)
@@ -30,4 +30,4 @@ final class BuyableCollection extends \SplObjectStorage
     {
         $this->detach($buyable);
     }
-} 
+}

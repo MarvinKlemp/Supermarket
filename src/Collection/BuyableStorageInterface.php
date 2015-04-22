@@ -7,7 +7,7 @@ use MarvinKlemp\SuperMarket\BuyableInterface;
 interface BuyableStorageInterface
 {
     /**
-     * @param BuyableInterface $buyable
+     * @param  BuyableInterface $buyable
      * @return bool
      */
     public function contains(BuyableInterface $buyable);
@@ -21,4 +21,4 @@ interface BuyableStorageInterface
      * @param BuyableInterface $buyable
      */
     public function remove(BuyableInterface $buyable);
-} 
+}

@@ -8,12 +8,12 @@ use MarvinKlemp\SuperMarket\ShoppingBagItem;
 class ShoppingBagItemTest extends \PHPUnit_Framework_TestCase
 {
     public function test_it_should_be_initializable()
-{
-    $buyable = $this->getMockForAbstractClass(BuyableInterface::class);
-    $shoppingBagItem = new ShoppingBagItem($buyable, 1);
+    {
+        $buyable = $this->getMockForAbstractClass(BuyableInterface::class);
+        $shoppingBagItem = new ShoppingBagItem($buyable, 1);
 
-    $this->assertInstanceOf(ShoppingBagItem::class, $shoppingBagItem);
-}
+        $this->assertInstanceOf(ShoppingBagItem::class, $shoppingBagItem);
+    }
 
     public function test_it_should_multiply_costs()
     {
@@ -31,4 +31,4 @@ class ShoppingBagItemTest extends \PHPUnit_Framework_TestCase
         $shoppingBagItem = new ShoppingBagItem($buyable, 5);
         $this->assertEquals(50, $shoppingBagItem->costs());
     }
-} 
+}
