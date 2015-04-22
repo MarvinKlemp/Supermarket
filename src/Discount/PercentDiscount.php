@@ -23,7 +23,7 @@ final class PercentDiscount implements BuyableInterface
     public function __construct(BuyableInterface $item, $percentageDiscount)
     {
         $this->item = $item;
-        $this->percentageDiscount = $percentageDiscount;
+        $this->percentageDiscount = $percentageDiscount / 100;
     }
 
     /**

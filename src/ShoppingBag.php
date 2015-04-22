@@ -2,16 +2,21 @@
 
 namespace MarvinKlemp\SuperMarket;
 
+use MarvinKlemp\SuperMarket\Collection\BuyableStorageInterface;
+
 class ShoppingBag implements BuyableInterface
 {
     /**
-     * @var BuyableInterface[]
+     * @var BuyableStorageInterface
      */
     protected $items;
 
-    public function __construct()
+    /**
+     * @param BuyableStorageInterface $storage
+     */
+    public function __construct(BuyableStorageInterface $storage)
     {
-        $this->items = [];
+        $this->items = $storage;
     }
 
     /**
@@ -21,6 +26,7 @@ class ShoppingBag implements BuyableInterface
     {
         $res = 0;
 
+        /** @var BuyableInterface $item  */
         foreach ($this->items as $item) {
             $res += $item->costs();
         }
@@ -30,6 +36,6 @@ class ShoppingBag implements BuyableInterface
 
     public function put(BuyableInterface $item)
     {
-        $this->items[] = $item;
+        $this->items->put($item);
     }
 }
