@@ -1,6 +1,6 @@
 <?php
 
-namespace MarvinKlemp\SuperMarket\Tests;
+namespace MarvinKlemp\SuperMarket\Tests\Discount;
 
 use MarvinKlemp\SuperMarket\BuyableInterface;
 use MarvinKlemp\SuperMarket\Discount\PercentDiscount;
